@@ -8,7 +8,7 @@
 
 ## 开发环境准备
 
-* 安装Golang 1.8+ : `brew install golang`
+* 安装Golang 1.8+ : `brew install go`
 * 设置`GOPATH`环境变量：
 ```bash
 mkdir -p ~/go
@@ -61,7 +61,8 @@ export PATH=$PATH:$GOPATH/bin
 ```bash
 docker-compose up -d user-db servicecenter
 make buildmac
-CSE_SERVICE_CENTER=http://127.0.0.1:30100 ./bin/user -port=8080 -database=mongodb -mongo-host=localhost:27017
+cp -r conf ./bin/conf
+export CSE_REGISTRY_ADDR=http://127.0.0.1:30100; export MONGO_HOST=127.0.0.1:27017 ; ./bin/user 
 ```
 
 * 接口测试：

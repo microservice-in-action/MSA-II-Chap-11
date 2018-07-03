@@ -21,3 +21,4 @@ shipping/.vscode/
 .DS_Store
 vendor
 bin/*
+log
