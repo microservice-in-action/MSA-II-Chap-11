@@ -1,0 +1,60 @@
+---
+#region:
+#  name: us-east
+#  availableZone: us-east-1
+#微服务的公共属性
+APPLICATION_ID: sockshop
+
+cse:
+  loadbalance:
+    strategyName: RoundRobin
+    retryEnabled: false
+    retryOnNext: 2
+    retryOnSame: 3
+    backoff:
+      kind: constant
+      minMs: 200
+      maxMs: 400
+  service:
+    registry:
+      type: servicecenter           #optional:可选zookeeper/servicecenter，zookeeper供中软使用，不配置的情况下默认为servicecenter
+      scope: full                   #optional:scope不为full时，只允许在本app间访问，不允许跨app访问；为full就是注册时允许跨app，并且发现本租户全部微服务
+      address: http://10.19.169.117:30100 
+      #enableSSL: false
+      #register: manual          optional：register不配置时默认为自动注册，可选参数有自动注册auto和手动注册manual
+      refeshInterval : 30s
+      watch: true
+      tenant: default
+  protocols:
+    highway:
+      listenAddress: 0.0.0.0:9090
+      advertiseAddress: 172.17.0.9:8080
+      transport: tcp #optional 指定加载那个传输层
+    rest:
+      listenAddress: 0.0.0.0:8081
+      advertiseAddress: 172.17.0.9:8081
+      transport: tcp #optional 指定加载那个传输层
+  handler:
+    chain:
+      Provider:
+        default: bizkeeper-provider
+ssl:
+  test.consumer.cipherPlugin:
+  test.consumer.verifyPeer:
+  test.consumer.verifyCN:
+  test.consumer.cipherSuits:
+  test.consumer.protocol:
+  test.consumer.caFile:
+  test.consumer.certFile: server.cer
+  test.consumer.keyFile:
+  test.consumer.certPwdFile: cert_pwd
+
+  registry.consumer.cipherPlugin: default
+  registry.consumer.verifyPeer: false
+  registry.consumer.cipherSuits: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+  registry.consumer.protocol: TLSv1.2
+  registry.consumer.caFile:
+  registry.consumer.certFile:
+  registry.consumer.keyFile:
+  registry.consumer.certPwdFile:
+

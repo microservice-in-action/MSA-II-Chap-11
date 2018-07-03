@@ -1,0 +1,6 @@
+---
+#微服务的私有属性
+service_description:
+  name: user
+  version: 0.0.1
+  level: FRONT

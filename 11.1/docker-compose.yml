@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+    user:
+        build: 
+          context: .
+        hostname: user
+        environment:
+            - MONGO_HOST=user-db:27017
+            - reschedule=on-node-failure
+            - CSE_SERVICE_CENTER=http://servicecenter:30100
+        ports:
+            - "8081:8081"
+        links:
+            - user-db:user-db
+            - servicecenter:servicecenter
+    user-db:
+        build: 
+          context: ./docker/user-db
+        hostname: user-db
+        environment:
+            - reschedule=on-node-failure
+        ports:
+          - 27017:27017
+    servicecenter:
+        image: servicecomb/service-center:latest
+        ports:
+          - 30100:30100

@@ -1,0 +1,37 @@
+---
+isolation:
+    Consumer:
+        timeoutInMilliseconds: 1000
+        maxConcurrentRequests: 10
+    Consumer|service1:
+        timeoutInMilliseconds: 1000
+        maxConcurrentRequests: 10
+    Consumer|service1|HelloServer|SayHello:
+        timeoutInMilliseconds: 1000
+        maxConcurrentRequests: 10
+circuitBreaker:
+    Consumer:   
+        enabled: true
+        forceOpen: false
+        forceClose: true
+        sleepWindowInMilliseconds: 10000
+        requestVolumeThreshold: 20
+        errorThresholdPercentage: 50
+    Consumer|service1:
+        requestVolumeThreshold: 20
+        errorThresholdPercentage: 50
+    Consumer|service1|HelloServer|SayHello:
+        requestVolumeThreshold: 20
+        errorThresholdPercentage: 50
+#容错处理函数，目前暂时按照开源的方式来不进行区分处理，统一调用fallback函数
+fallback:
+    Consumer:   
+        enabled: false
+        maxConcurrentRequests: 20
+        policy: throwexception
+    Consumer|service1:
+        maxConcurrentRequests: 20
+        policy: throwexception
+    Consumer|service1|HelloServer|SayHello:
+        maxConcurrentRequests: 20
+        policy: throwexception

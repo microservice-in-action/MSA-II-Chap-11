@@ -1,0 +1,19 @@
+---
+# LoggerLevel: |DEBUG|INFO|WARN|ERROR|FATAL
+logger_level: DEBUG
+
+# LoggerFile: used to output the name of log
+logger_file: log
+
+# LogFormatText:设定日志的输出格式是 json 还是 plaintext (类似于log4j)，默认为 false，不建议修改，如果开发过程中想本地查看日志的话，
+# 可以设定 LoggerFile 和 LogFormatText 为 true，这样会输出类似于 log4j 格式的本地日志。
+log_format_text: false
+
+# EnableRsyslog: 设定是否输出日志到 rsyslog，默认为 false.
+enable_rsyslog: true
+
+# RsyslogNetwork: 设定日志传输的方式，是 "udp" 还是 "tcp"，默认为"udp".
+rsyslog_network:
+
+# RsyslogAddr: 设定日志发送的目的syslog地址.
+rsyslog_addr: 127.0.0.1:5151
