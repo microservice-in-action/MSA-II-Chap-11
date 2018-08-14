@@ -1,0 +1,17 @@
+version: '3'
+services:
+  carts-service:
+    build: .
+    ports:
+     - "7072:7072"
+    environment:
+     - MONGODB_CARTS_SERVICE_HOST=mongo-db
+     - SC_HOST=sc-host
+  mongo-db:
+    image: mongo:latest
+    ports:
+     - "27017:27017"
+  sc-host:
+    image: servicecomb/service-center:latest
+    ports:
+     - "30100:30100"
