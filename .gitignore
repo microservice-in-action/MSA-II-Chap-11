@@ -19,3 +19,7 @@ queue-master/.classpath
 shipping/.classpath
 shipping/.vscode/
 .DS_Store
+**/target
+*.class
+**/.vscode
+.vscode

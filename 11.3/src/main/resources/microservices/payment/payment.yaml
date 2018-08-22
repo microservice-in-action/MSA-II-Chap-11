@@ -1,0 +1,48 @@
+swagger: '2.0'
+info: 
+ version: "0.0.1" 
+ x-java-interface: payment
+ title: Payment
+ description: "Payment service spec"
+ license: 
+  name: MIT
+  url: "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+#host: payment
+#basePath: "/"
+#securityDefinitions: 
+#schemes: 
+ #- http
+basePath: 
+consumes: 
+ - application/json
+produces: 
+ - application/json
+paths: 
+  /paymentAuth: 
+    post: 
+      operationId: AuthoriseEndpoint
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "order placed for purchasing the pet"
+        required: true
+        schema:
+          $ref: '#/definitions/paymentbody'
+      responses: 
+        200: 
+          description: ""
+          schema: 
+            $ref: '#/definitions/paymentAuth'
+definitions: 
+   paymentAuth: 
+     type: object
+     properties: 
+       authorised: 
+         type: boolean
+       message:
+         type: string
+   paymentbody:
+     type: object
+     properties:
+       amount:
+        type: number
