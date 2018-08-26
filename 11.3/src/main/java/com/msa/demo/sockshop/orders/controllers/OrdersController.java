@@ -81,30 +81,14 @@ public class OrdersController {
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public @ResponseBody CustomerOrder newOrder(@RequestBody NewOrderResource item) {
 		try {
-			if (item.address == null || item.customer == null || item.card == null
-					|| item.items == null && item.customerId == null) {
+			if (item.address == null || item.items == null && item.customerId == null) {
 				throw new InvalidOrderException(
 						"Invalid order request. Order requires customer, address, card and items.");
 			}
 
 			LOG.info("Starting calls");
-			LOG.info(item.address.getPath());
-			LOG.info(item.customer.getPath());
-			LOG.info(item.card.getPath());
+			LOG.info(item.address);
 			LOG.info(item.items.toString());
-			Future<Resource<Address>> addressFuture = asyncGetService.getResource(item.address,
-					new TypeReferences.ResourceType<Address>() {
-					});
-
-			Future<Resource<Customer>> customerFuture = asyncGetService.getResource(item.customer,
-					new TypeReferences.ResourceType<Customer>() {
-					});
-
-			Future<Resource<Card>> cardFuture = asyncGetService.getResource(item.card,
-					new TypeReferences.ResourceType<Card>() {
-					});
-
-			LOG.info("End of calls.");
 
 			float amount = calculateTotal(item.items);
 
@@ -113,20 +97,20 @@ public class OrdersController {
 			PaymentRequest paymentRequest = new PaymentRequest(amount);
 			restTemplate = RestTemplateBuilder.create();
 			String prefixx = "cse://payment";
-			restTemplate.postForObject(prefixx + "/paymentAuth", paymentRequest, PaymentResponse.class);
+//			restTemplate.postForObject(prefixx + "/paymentAuth", paymentRequest, PaymentResponse.class);
 
 			String customerId = item.customerId;
 			String prefix = "cse://shipping";
-			String username = customerFuture.get(timeout, TimeUnit.SECONDS).getContent().getUsername();
-			Shipment shippment = restTemplate.postForObject(prefix + "/shipping/" + username, new Shipment(customerId),
-					Shipment.class);
-			Future<Shipment> shipmentFuture = new AsyncResult<>(shippment);
+//			Shipment shippment = restTemplate.postForObject(prefix + "/shipping/" + customerId, new Shipment(customerId),
+//					Shipment.class);
+//			Future<Shipment> shipmentFuture = new AsyncResult<>(shippment);
+//			double shipmentFee = shipmentFuture.get(timeout, TimeUnit.SECONDS).getAmount();
+			double shipmentFee = 0;
 			CustomerOrder order = new CustomerOrder(null, customerId,
-					customerFuture.get(timeout, TimeUnit.SECONDS).getContent(),
-					addressFuture.get(timeout, TimeUnit.SECONDS).getContent(),
-					cardFuture.get(timeout, TimeUnit.SECONDS).getContent(), item.items,
-					shipmentFuture.get(timeout, TimeUnit.SECONDS), Calendar.getInstance().getTime(),
-					amount + shipmentFuture.get(timeout, TimeUnit.SECONDS).getAmount());
+					new Address(item.address),
+					item.items,
+					null,
+					Calendar.getInstance().getTime(),amount);
 
 			LOG.info("Received data: " + order.toString());
 
@@ -135,10 +119,8 @@ public class OrdersController {
 
 			return savedOrder;
 
-		} catch (TimeoutException e) {
+		} catch (Exception e) {
 			throw new IllegalStateException("Unable to create order due to timeout from one of the services.", e);
-		} catch (InterruptedException | IOException | ExecutionException e) {
-			throw new IllegalStateException("Unable to create order due to unspecified IO error.", e);
 		}
 	}
 

@@ -19,11 +19,7 @@ public class CustomerOrder {
 
     private String customerId;
 
-    private Customer customer;
-
     private Address address;
-
-    private Card card;
 
     private Collection<Item> items;
 
@@ -36,13 +32,11 @@ public class CustomerOrder {
     public CustomerOrder() {
     }
 
-    public CustomerOrder(String id, String customerId, Customer customer, Address address, Card card,
+    public CustomerOrder(String id, String customerId, Address address,
             Collection<Item> items, Shipment shipment, Date date, float total) {
         this.id = id;
         this.customerId = customerId;
-        this.customer = customer;
         this.address = address;
-        this.card = card;
         this.items = items;
         this.shipment = shipment;
         this.date = date;
@@ -54,9 +48,7 @@ public class CustomerOrder {
         return "CustomerOrder{" +
                 "id='" + id + '\'' +
                 ", customerId='" + customerId + '\'' +
-                ", customer=" + customer +
                 ", address=" + address +
-                ", card=" + card +
                 ", items=" + items +
                 ", date=" + date +
                 '}';
@@ -80,28 +72,12 @@ public class CustomerOrder {
         this.customerId = customerId;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
     public Address getAddress() {
         return address;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
     }
 
     public Collection<Item> getItems() {
