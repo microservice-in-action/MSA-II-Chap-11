@@ -1,0 +1,74 @@
+swagger: '2.0'
+info: 
+ version: "0.0.1"
+ title: Payment
+ description: "Payment service spec"
+ license: 
+  name: MIT
+  url: "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
+#host: payment
+#basePath: "/"
+#securityDefinitions: 
+#schemes: 
+ #- http
+basePath: /payment
+consumes: 
+ - application/json; charset=utf-8
+produces: 
+ - application/json; charset=utf-8
+paths: 
+  /health: 
+    get: 
+      operationId: HealthEndpoint
+      responses: 
+        200: 
+          description: success
+          schema: 
+            $ref: '#/definitions/health'
+  /paymentAuth: 
+    post: 
+      operationId: AuthoriseEndpoint
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "order placed for purchasing the pet"
+        required: true
+        schema:
+          $ref: '#/definitions/paymentbody'
+      responses: 
+        200: 
+          description: ""
+          schema: 
+            $ref: '#/definitions/paymentAuth'
+definitions: 
+   health: 
+     title: Health
+     type: object
+     properties: 
+       health: 
+         type: array
+         items: 
+           type: object
+           properties: 
+             service: 
+               type: string
+             status: 
+               type: string
+             time: 
+               type: string
+     required: 
+       - health
+   paymentAuth: 
+     title: paymentAuth response
+     type: object
+     properties: 
+       authorised: 
+         type: boolean
+     required: 
+       - authorised
+   paymentbody:
+     title: payment body
+     type: object
+     properties:
+       amount:
+        type: number

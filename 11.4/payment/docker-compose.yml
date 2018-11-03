@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+    payment:
+        build: 
+          context: .
+        hostname: payment
+        environment:
+            - CSE_SERVICE_CENTER=http://servicecenter:30100
+        ports:
+            - "8088:8088"
+        links:
+            - servicecenter:servicecenter
+    servicecenter:
+        image: servicecomb/service-center:latest
+        ports:
+          - 30100:30100

@@ -1,0 +1,319 @@
+hash: 839c64b893d03e4933e1278a65ba68c6cc9dedba416eeeffad8818f970d4f76f
+updated: 2018-07-03T17:38:03.302100831+08:00
+imports:
+- name: github.com/apache/thrift
+  version: 3d556248a8b97310da49939195330691dfe9d9ad
+  repo: https://github.com/apache/thrift
+  subpackages:
+  - lib/go/thrift
+- name: github.com/beorn7/perks
+  version: 4c0e84591b9aa9e6dcfdf3e020114cd81f89d5f9
+  repo: https://github.com/beorn7/perks
+  subpackages:
+  - quantile
+- name: github.com/caarlos0/env
+  version: bc122c26dc2d72f6904a9e0cb940ca508660067c
+- name: github.com/cenkalti/backoff
+  version: 3db60c813733fce657c114634171689bbf1f8dee
+  repo: https://github.com/cenkalti/backoff
+- name: github.com/davecgh/go-spew
+  version: 6cf5744a041a0022271cefed95ba843f6d87fd51
+  repo: https://github.com/davecgh/go-spew
+  subpackages:
+  - spew
+- name: github.com/eapache/go-resiliency
+  version: 6800482f2c813e689c88b7ed3282262385011890
+  repo: https://github.com/eapache/go-resiliency
+  subpackages:
+  - breaker
+- name: github.com/eapache/go-xerial-snappy
+  version: bb955e01b9346ac19dc29eb16586c90ded99a98c
+  repo: https://github.com/eapache/go-xerial-snappy
+- name: github.com/eapache/queue
+  version: ded5959c0d4e360646dc9e9908cff48666781367
+  repo: https://github.com/eapache/queue
+- name: github.com/emicklei/go-restful
+  version: 2810ccc68e0ca445fa81ebfa03fbf70aca5c41ae
+  repo: https://github.com/emicklei/go-restful
+  subpackages:
+  - log
+- name: github.com/emicklei/go-restful-swagger12
+  version: dcef7f55730566d41eae5db10e7d6981829720f6
+  repo: https://github.com/emicklei/go-restful-swagger12
+- name: github.com/envoyproxy/go-control-plane
+  version: bc01fbfcb66faf0bf61e1e98a7b189689a7066a1
+  repo: https://github.com/envoyproxy/go-control-plane
+  subpackages:
+  - envoy/api/v2
+  - envoy/api/v2/auth
+  - envoy/api/v2/cluster
+  - envoy/api/v2/core
+  - envoy/api/v2/endpoint
+  - envoy/api/v2/listener
+  - envoy/api/v2/route
+  - envoy/service/discovery/v2
+  - envoy/type
+- name: github.com/fsnotify/fsnotify
+  version: 629574ca2a5df945712d3079857300b5e4da0236
+  repo: https://github.com/fsnotify/fsnotify
+- name: github.com/go-kit/kit
+  version: fadad6fffe0466b19df9efd9acde5c9a52df5fa4
+  subpackages:
+  - circuitbreaker
+  - endpoint
+  - log
+  - metrics
+  - metrics/prometheus
+  - tracing/opentracing
+  - transport/http
+- name: github.com/go-logfmt/logfmt
+  version: 390ab7935ee28ec6b286364bba9b4dd6410cb3d5
+  repo: https://github.com/go-logfmt/logfmt
+- name: github.com/gogo/googleapis
+  version: b23578765ee54ff6bceff57f397d833bf4ca6869
+  subpackages:
+  - google/api
+  - google/rpc
+- name: github.com/gogo/protobuf
+  version: 100ba4e885062801d56799d78530b73b178a78f3
+  repo: https://github.com/gogo/protobuf
+  subpackages:
+  - gogoproto
+  - proto
+  - protoc-gen-gogo/descriptor
+  - sortkeys
+  - types
+- name: github.com/golang/protobuf
+  version: 98fa357170587e470c5f27d3c3ea0947b71eb455
+  repo: https://github.com/golang/protobuf
+  subpackages:
+  - proto
+  - protoc-gen-go/descriptor
+  - ptypes/duration
+  - ptypes/timestamp
+- name: github.com/golang/snappy
+  version: d9eb7a3d35ec988b8585d4a0068e462c27d28380
+  repo: https://github.com/golang/snappy
+- name: github.com/gorilla/websocket
+  version: 1f512fc3f05332ba7117626cdfb4e07474e58e60
+  repo: https://github.com/gorilla/websocket
+- name: github.com/hashicorp/go-version
+  version: 23480c0665776210b5fbbac6eaaee40e3e6a96b7
+  repo: https://github.com/hashicorp/go-version
+- name: github.com/klauspost/compress
+  version: e3b7981a12dd3cab49afa1d3a50e715846f23732
+  repo: https://github.com/klauspost/compress
+  subpackages:
+  - flate
+  - gzip
+  - zlib
+- name: github.com/klauspost/cpuid
+  version: 09cded8978dc9e80714c4d85b0322337b0a1e5e0
+  repo: https://github.com/klauspost/cpuid
+- name: github.com/klauspost/crc32
+  version: cb6bfca970f6908083f26f39a79009d608efd5cd
+  repo: https://github.com/klauspost/crc32
+- name: github.com/kr/logfmt
+  version: b84e30acd515aadc4b783ad4ff83aff3299bdfe0
+- name: github.com/lyft/protoc-gen-validate
+  version: cae364899cd8c08b83bfdcabf4ce4dd4a68ca6da
+  subpackages:
+  - validate
+- name: github.com/matttproud/golang_protobuf_extensions
+  version: 3247c84500bff8d9fb6d579d800f20b3e091582c
+  repo: https://github.com/matttproud/golang_protobuf_extensions
+  subpackages:
+  - pbutil
+- name: github.com/opentracing-contrib/go-observer
+  version: a52f2342449246d5bcc273e65cbdcfa5f7d6c63c
+  repo: https://github.com/opentracing-contrib/go-observer
+- name: github.com/opentracing/opentracing-go
+  version: 1949ddbfd147afd4d964a9f00b24eb291e0e7c38
+  subpackages:
+  - ext
+  - log
+- name: github.com/openzipkin/zipkin-go-opentracing
+  version: 6bb822a7f15fdc5800b9822a6ac1bfa0b7d9195d
+  subpackages:
+  - flag
+  - thrift/gen-go/scribe
+  - thrift/gen-go/zipkincore
+  - types
+  - wire
+- name: github.com/patrickmn/go-cache
+  version: a3647f8e31d79543b2d0f0ae2fe5c379d72cedc0
+  repo: https://github.com/patrickmn/go-cache
+- name: github.com/prometheus/client_golang
+  version: c5b7fccd204277076155f10851dad72b76a49317
+  repo: https://github.com/prometheus/client_golang
+  subpackages:
+  - prometheus
+  - prometheus/promhttp
+- name: github.com/prometheus/client_model
+  version: 6f3806018612930941127f2a7c6c453ba2c527d2
+  repo: https://github.com/prometheus/client_model
+  subpackages:
+  - go
+- name: github.com/prometheus/common
+  version: 2f17f4a9d485bf34b4bfaccc273805040e4f86c8
+  repo: https://github.com/prometheus/common
+  subpackages:
+  - expfmt
+  - internal/bitbucket.org/ww/goautoneg
+  - model
+- name: github.com/prometheus/procfs
+  version: e645f4e5aaa8506fc71d6edbc5c4ff02c04c46f2
+  repo: https://github.com/prometheus/procfs
+  subpackages:
+  - xfs
+- name: github.com/rcrowley/go-metrics
+  version: ab2277b1c5d15c3cba104e9cbddbdfc622df5ad8
+  repo: https://github.com/rcrowley/go-metrics
+- name: github.com/ServiceComb/auth
+  version: 31bcd34cbac5841ae214b7a8fb322168d191325e
+  repo: https://github.com/ServiceComb/auth
+  subpackages:
+  - third_party/forked/datastream/aws
+- name: github.com/ServiceComb/go-archaius
+  version: 44d89fbd0cc185c74202add2f82ec21c2e40f799
+  repo: https://github.com/ServiceComb/go-archaius
+  subpackages:
+  - core
+  - core/cast
+  - core/config-manager
+  - core/event-system
+  - lager
+  - sources/commandline-source
+  - sources/configcenter-source
+  - sources/enviromentvariable-source
+  - sources/file-source
+  - sources/memory-source
+- name: github.com/ServiceComb/go-cc-client
+  version: 2c44fcf5dfa384072b0d76ab130db417d5fa07e2
+  repo: https://github.com/ServiceComb/go-cc-client
+  subpackages:
+  - apollo-client
+  - member-discovery
+  - serializers
+  - serializers/json
+- name: github.com/ServiceComb/go-chassis
+  version: abe2100b28c4db76fe318242b182a5eee04873ba
+  subpackages:
+  - auth
+  - bootstrap
+  - client/highway
+  - client/highway/pb
+  - client/rest
+  - config-center
+  - core/archaius
+  - core/client
+  - core/common
+  - core/config
+  - core/config/model
+  - core/config/schema
+  - core/endpoint-discovery
+  - core/fault
+  - core/goplugin
+  - core/handler
+  - core/invocation
+  - core/lager
+  - core/loadbalancer
+  - core/metadata
+  - core/provider
+  - core/qpslimiter
+  - core/registry
+  - core/registry/file
+  - core/registry/pilot
+  - core/registry/servicecenter
+  - core/router
+  - core/router/cse
+  - core/router/pilot
+  - core/router/weightpool
+  - core/server
+  - core/tls
+  - core/tracing
+  - core/util/string
+  - eventlistener
+  - healthz/client
+  - metrics
+  - metrics/prom
+  - pkg/istio/client
+  - pkg/istio/util
+  - security
+  - security/common
+  - security/plugins/aes
+  - security/plugins/plain
+  - server/highway
+  - server/restful
+  - session
+  - third_party/forked/afex/hystrix-go/hystrix
+  - third_party/forked/afex/hystrix-go/hystrix/metric_collector
+  - third_party/forked/afex/hystrix-go/hystrix/rolling
+  - util/fileutil
+  - util/iputil
+- name: github.com/ServiceComb/go-sc-client
+  version: 369f58c0db9f0a9d1bf632aa1d262135828adf76
+  repo: https://github.com/ServiceComb/go-sc-client
+  subpackages:
+  - model
+- name: github.com/ServiceComb/http-client
+  version: 1c8b6172a2877d77b85fb7a308a49301ca7f7855
+  repo: https://github.com/ServiceComb/http-client
+- name: github.com/ServiceComb/paas-lager
+  version: 70c0ec58b92bfcc895af93e779bd3f3e107c6dd9
+  repo: https://github.com/ServiceComb/paas-lager
+  subpackages:
+  - third_party/forked/cloudfoundry/lager
+  - third_party/forked/cloudfoundry/lager/color
+- name: github.com/Shopify/sarama
+  version: 9bb4a68d57ff6f623363aa172f0a8297aa289ba7
+  repo: https://github.com/Shopify/sarama
+- name: github.com/spf13/cast
+  version: acbeb36b902d72a7a4c18e8f3241075e7ab763e4
+  repo: https://github.com/spf13/cast
+- name: github.com/valyala/fasthttp
+  version: d42167fd04f636e20b005e9934159e95454233c7
+  repo: https://github.com/valyala/fasthttp
+  subpackages:
+  - fasthttputil
+- name: go.uber.org/ratelimit
+  version: d15fa2e2a63dd52104bc96d8ea7dc47ce8027de8
+  repo: https://github.com/uber-go/ratelimit
+  subpackages:
+  - internal/clock
+- name: golang.org/x/net
+  version: d4c55e66d8c3a2f3382d264b08e3e3454a66355a
+  repo: https://github.com/golang/net
+  subpackages:
+  - context
+  - http2
+  - http2/hpack
+  - internal/timeseries
+  - lex/httplex
+  - trace
+- name: golang.org/x/sys
+  version: 98b5b1e7e80eb60271c8dc4eba6521ec2c3e811e
+  repo: https://github.com/golang/sys
+  subpackages:
+  - unix
+- name: google.golang.org/grpc
+  version: 777daa17ff9b5daef1cfdf915088a2ada3332bf0
+  repo: https://github.com/grpc/grpc-go
+  subpackages:
+  - codes
+  - credentials
+  - grpclog
+  - internal
+  - metadata
+  - naming
+  - peer
+  - transport
+- name: gopkg.in/yaml.v2
+  version: a5b47d31c556af34a302ce5d659e6fea44d90de0
+  repo: https://github.com/go-yaml/yaml
+- name: k8s.io/apimachinery
+  version: 150d32b09b5966b39cb02d7945f0d1bc7b9f1a19
+  repo: https://github.com/kubernetes/apimachinery
+  subpackages:
+  - pkg/util/sets
+testImports: []
