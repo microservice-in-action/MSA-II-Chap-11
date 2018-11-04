@@ -34,29 +34,19 @@ public class ShippingConsumerTest extends ConsumerPactTestMk2 {
     @Rule
     public PactProviderRuleMk2 rule = new PactProviderRuleMk2("shipping-service", "localhost", 9999, this);
 
-    private PactDslJsonBody requestBody = new PactDslJsonBody()
-            .stringValue("name", "shipment1")
-            .stringValue("amount", "8.0");
+    private PactDslJsonBody requestBody = new PactDslJsonBody().stringValue("name", "shipment1").stringValue("amount",
+            "8.0");
 
     private PactDslJsonBody responseBody = new PactDslJsonBody()
-            .stringValue("id", "d331083b-a1f4-4d61-ab59-14eed5e3fc7f")
-            .stringValue("name", "shipment1")
+            .stringValue("id", "d331083b-a1f4-4d61-ab59-14eed5e3fc7f").stringValue("name", "shipment1")
             .stringValue("amount", "8.0");
 
     @Override
     protected RequestResponsePact createPact(PactDslWithProvider builder) {
-        return builder.given("shippment of order sent.")
-                .uponReceiving("shippment request from order service")
-                .path("/shipping")
-                .query("username=consumerA")
-                .method("POST")
-                .headers("Content-Type", "application/json")
-                .body(requestBody)
-                .willRespondWith()
-                .status(200)
-                .body(responseBody)
-                .matchHeader("Content-Type", "application/json", "application/json")
-                .toPact();
+        return builder.given("shippment of order sent.").uponReceiving("shippment request from order service")
+                .path("/shipping").query("username=consumerA").method("POST")
+                .headers("Content-Type", "application/json").body(requestBody).willRespondWith().status(200)
+                .body(responseBody).matchHeader("Content-Type", "application/json", "application/json").toPact();
     }
 
     @Override
@@ -73,24 +63,18 @@ public class ShippingConsumerTest extends ConsumerPactTestMk2 {
     protected void runTest(MockServer mockServer) throws IOException {
         URIBuilder uriBuilder;
         try {
-            uriBuilder = new URIBuilder(mockServer.getUrl())
-                    .setPath("/shipping")
-                    .setParameter("username", "consumerA");
+            uriBuilder = new URIBuilder(mockServer.getUrl()).setPath("/shipping").setParameter("username", "consumerA");
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
 
         System.out.println(uriBuilder.toString());
 
-        HttpResponse response = Request.Post(uriBuilder.toString())
-                            .body(new StringEntity(requestBody.toString()))
-                            .addHeader("Content-Type", "application/json")
-                            .execute().returnResponse();
+        HttpResponse response = Request.Post(uriBuilder.toString()).body(new StringEntity(requestBody.toString()))
+                .addHeader("Content-Type", "application/json").execute().returnResponse();
 
-        String body = Request.Post(uriBuilder.toString())
-                            .body(new StringEntity(requestBody.toString()))
-                            .addHeader("Content-Type", "application/json")
-                            .execute().returnContent().toString();
+        String body = Request.Post(uriBuilder.toString()).body(new StringEntity(requestBody.toString()))
+                .addHeader("Content-Type", "application/json").execute().returnContent().toString();
 
         assertEquals(200, response.getStatusLine().getStatusCode());
         assertEquals(responseBody.toString(), body);

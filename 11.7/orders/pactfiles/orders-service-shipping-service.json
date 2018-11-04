@@ -1,0 +1,69 @@
+{
+    "provider": {
+        "name": "shipping-service"
+    },
+    "consumer": {
+        "name": "orders-service"
+    },
+    "interactions": [
+        {
+            "description": "shippment request from order service",
+            "request": {
+                "method": "POST",
+                "path": "/shipping",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "query": {
+                    "username": [
+                        "consumerA"
+                    ]
+                },
+                "body": {
+                    "amount": "8.0",
+                    "name": "shipment1"
+                }
+            },
+            "response": {
+                "status": 200,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": {
+                    "amount": "8.0",
+                    "name": "shipment1",
+                    "id": "d331083b-a1f4-4d61-ab59-14eed5e3fc7f"
+                },
+                "matchingRules": {
+                    "body": {
+                        
+                    },
+                    "header": {
+                        "Content-Type": {
+                            "matchers": [
+                                {
+                                    "match": "regex",
+                                    "regex": "application/json"
+                                }
+                            ],
+                            "combine": "AND"
+                        }
+                    }
+                }
+            },
+            "providerStates": [
+                {
+                    "name": "shippment of order sent."
+                }
+            ]
+        }
+    ],
+    "metadata": {
+        "pact-specification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.13"
+        }
+    }
+}

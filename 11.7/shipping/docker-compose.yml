@@ -1,0 +1,27 @@
+version: '3'
+services:
+  shipping-service:
+    build: .
+    ports:
+     - "8080:7074"
+    environment:
+     - RABBITMQ_SERVICE_HOST=rabbitmq
+     - SC_HOST=servicecenter
+  # queue-master:
+  #   image: queue-master
+  #   ports:
+  #    - "7075:7075"
+  #   environment:
+  #    - RABBITMQ_SERVICE_HOST=rabbitmq
+  #    - SC_HOST=servicecenter
+  # rabbitmq:
+  #   image: rabbitmq:3
+  #   ports:
+  #    - "4369:4369"
+  #    - "5671:5671"
+  #    - "5672:5672"
+  #    - "25672:25672"
+  servicecenter:
+    image: servicecomb/service-center:latest
+    ports:
+     - "30100:30100"
