@@ -1,0 +1,9 @@
+protocols:
+  http:
+    listenAddress: 0.0.0.0:30101 # mesher监听地址
+service:
+  registry:
+    address: http://servicecenter:30100 # 注册中心地址
+    scope: full # 设置为full，能够对其它应用进行服务发现
+    watch: false # 是否监听实例的变更事件
+    autoIPIndex: true # 如果要解析微服务的源IP地址，设置为true

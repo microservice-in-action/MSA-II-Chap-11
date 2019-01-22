@@ -1,0 +1,90 @@
+version: '2'
+services:
+  frontend:
+    build:
+        context: .
+        dockerfile: ./Dockerfile
+    environment: 
+      SERVMESHER_SERVICE_HOST: "mesher"
+    restart: always
+    links:
+      - mesher:mesher
+    ports:
+      - 8079:8079
+  servicecenter:
+    image: servicecomb/service-center:latest
+    ports:
+      - 30100:30100
+  mesher:
+    image: hwcse/cse-mesher
+    ports: 
+      - 30101:30101
+    links:
+      - servicecenter:servicecenter
+    environment: 
+      CSE_REGISTRY_ADDR: http://servicecenter:30100
+    volumes: 
+      - ./chassis.yml:/etc/mesher/conf/chassis.yml
+  catalogue:
+    image: catalogue
+    environment:
+      - MYSQL_HOST=catalogue-db
+      - SC_HOST=servicecenter
+    links:
+      - servicecenter:servicecenter
+      - catalogue-db:catalogue-db
+    ports:
+        - "7071:7071"
+  catalogue-db:
+    image: catalogue-db
+    environment: 
+      - MYSQL_ROOT_PASSWORD=developer
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=CATALOGUE_DB
+  carts:
+    image: carts
+    ports:
+      - "7072:7072"
+    environment:
+      SC_HOST: "servicecenter:30100"
+      MONGODB_CARTS_SERVICE_HOST: "carts-db"
+    links:
+      - servicecenter:servicecenter
+      - carts-db:carts-db
+  carts-db:
+    image: iambowen/sockshop-mongo-carts
+  orders:
+    image: orders
+    ports:
+      - "7073:7073"
+    environment:
+      - MONGODB_ORDERS_SERVICE_HOST=orders-db
+      - SC_HOST=servicecenter
+    links:
+      - servicecenter:servicecenter
+      - orders-db:orders-db
+  orders-db:
+    image: mongo:latest
+  shipping:
+    image: shipping
+    ports:
+     - "7074:7074"
+    environment:
+     - RABBITMQ_SERVICE_HOST=rabbitmq
+     - SC_HOST=servicecenter
+    links:
+      - servicecenter:servicecenter
+      - rabbitmq:rabbitmq
+  rabbitmq:
+    image: rabbitmq:3
+    environment:
+     - RABBITMQ_DEFAULT_USER=guest
+     - RABBITMQ_DEFAULT_PASS=guest   
+    payment:
+      image: iambowen/payment
+      environment:
+          - CSE_SERVICE_CENTER=http://servicecenter:30100
+      ports:
+          - "8088:8088"
+      links:
+          - servicecenter:servicecenter     
